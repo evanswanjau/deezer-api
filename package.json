@@ -5,8 +5,15 @@
     "main": "dist/app.js",
     "scripts": {
         "start": "tsc && node dist/app.js",
+        "build-ts": "tsc",
+        "watch-ts": "tsc -w",
+        "watch-node": "nodemon dist/app.js",
         "lint": "eslint . --ext .ts",
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/evanswanjau/deezer-api.git"
     },
     "keywords": [],
     "author": "",
@@ -22,6 +29,7 @@
         "typescript": "^5.0.4"
     },
     "dependencies": {
+        "body-parser": "^1.20.2",
         "express": "^4.17.1"
     }
 }
