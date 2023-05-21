@@ -1,4 +1,8 @@
+import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+dotenv.config();
 import axios from "axios";
+
+const URL = process.env.DEEZER_API_URL;
 
 /**
  * Function that gets artist info
@@ -6,7 +10,7 @@ import axios from "axios";
 export const getArtist = async (req: any, res: any) => {
     try {
         const { data }: { data: any } = await axios.get(
-            "https://api.deezer.com/artist/" + req.params.id
+            URL + "/artist/" + req.params.id
         );
 
         const artist = (({ id, name, nb_fan, picture_medium }) => ({
@@ -33,7 +37,7 @@ export const getArtist = async (req: any, res: any) => {
 export const getArtistTopTracks = async (req: any, res: any) => {
     try {
         const { data } = await axios.get(
-            `https://api.deezer.com/artist/${req.params.id}/top`
+            URL + `/artist/${req.params.id}/top`
         );
 
         data.data = data.data.map((track) => {
@@ -59,7 +63,7 @@ export const getArtistTopTracks = async (req: any, res: any) => {
 export const getArtistAlbums = async (req: any, res: any) => {
     try {
         const { data } = await axios.get(
-            `https://api.deezer.com/artist/${req.params.id}/albums`
+            URL + `/artist/${req.params.id}/albums`
         );
 
         data.data = data.data.map((album) => {
